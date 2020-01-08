@@ -1,0 +1,13 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    gcloud container clusters get-credentials $_CLOUDSDK_CONTAINER_CLUSTER --zone $_CLOUDSDK_COMPUTE_ZONE --project ${PROJECT_ID}
+    #sed -i "s=gcr.io/project_id_stub/pricing:version_stub=gcr.io/${PROJECT_ID}/pricing:${BUILD_ID}=g" price_service_poc/k8s/pricing-deployment.yaml
+    kubectl apply -f ingress_example/apple.yaml
+    kubectl apply -f ingress_example/banana.yaml
+    kubectl apply -f ingress_example/ingress.yaml
+#images:
+  #  - 'gcr.io/${PROJECT_ID}/pricing:${BUILD_ID}'
