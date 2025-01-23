@@ -1,4 +1,4 @@
-codebase was created with https://www.cloudskillsboost.google for "Deploying Apps to Google Cloud"
+Codebase was created with https://www.cloudskillsboost.google for "Deploying Apps to Google Cloud"
 
 1. To run task 1 and 2:
 ```
@@ -10,7 +10,11 @@ docker run --rm -p 8080:8080 test-python
 gcloud app create --region=Region
 gcloud app deploy --version=one --quiet
 ```
-# add app.yaml with code: runtime: python39
+## add *app.yaml* with code: 
+```
+runtime: python39
+```
+
 ```
 gcloud app deploy --version=two --no-promote --quiet
 ```
@@ -18,7 +22,7 @@ gcloud app deploy --version=two --no-promote --quiet
 ```
 kubectl get nodes
 ```
-# add file kubernetes-config.yaml
+## add file *kubernetes-config.yaml*
 ```
 gcloud artifacts repositories create devops-demo \
     --repository-format=docker \
@@ -32,7 +36,7 @@ kubectl apply -f kubernetes-config.yaml
 kubectl get pods
 kubectl get services
 ```
-4. for Cloud Run
+4. for *Cloud Run*
 ```
 gcloud builds submit --tag europe-west1-docker.pkg.dev/$DEVSHELL_PROJECT_ID/devops-demo/cloud-run-image:v0.1 .
 ```
