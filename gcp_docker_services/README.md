@@ -10,7 +10,7 @@ docker run --rm -p 8080:8080 test-python
 gcloud app create --region=Region
 gcloud app deploy --version=one --quiet
 ```
-## add *app.yaml* with code: 
+3. Add *app.yaml* with code: 
 ```
 runtime: python39
 ```
@@ -18,11 +18,11 @@ runtime: python39
 ```
 gcloud app deploy --version=two --no-promote --quiet
 ```
-3. for Kubernetes
+4. for Kubernetes
 ```
 kubectl get nodes
 ```
-## add file *kubernetes-config.yaml*
+5. add file *kubernetes-config.yaml*
 ```
 gcloud artifacts repositories create devops-demo \
     --repository-format=docker \
@@ -36,7 +36,7 @@ kubectl apply -f kubernetes-config.yaml
 kubectl get pods
 kubectl get services
 ```
-4. for *Cloud Run*
+6. for *Cloud Run*
 ```
 gcloud builds submit --tag europe-west1-docker.pkg.dev/$DEVSHELL_PROJECT_ID/devops-demo/cloud-run-image:v0.1 .
 ```
